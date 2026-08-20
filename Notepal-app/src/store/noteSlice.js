@@ -12,6 +12,10 @@ const noteSlice = createSlice({
     removeNote:(state,action)=>{
       return state.filter((item) => item.id !== action.payload);
     },
+    editNote:(state,action)=>{
+      let note = state.find((item) => item.id === action.payload.id);
+      if (note) note.body = action.payload.body;
+    },
     addInitialNotes:(state,action)=>{
       return (state = action.payload);
     }
